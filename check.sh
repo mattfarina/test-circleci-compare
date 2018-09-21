@@ -2,22 +2,16 @@
 
 echo "Starting script..."
 
-changed=false
-
 if [ ! -f /tmp/some-yaml-cache/some.yaml ]; then
     echo "Cached copy not found! Proceed as changed"
-    changed=true
 else
     # Stat commands here are for linux which is different from macOS (BSDs)
     d=$(diff /tmp/some-yaml-cache/some.yaml some.yaml)
     if [[ ! -z $s ]]; then
         echo "New config is different from previous. Proceed as change"
-        changed=true
+    else
+        echo "No changes detected."
     fi
-fi
-
-if [[ changed==false ]]; then
-    echo "No changes detected."
 fi
 
 ## update the cache
