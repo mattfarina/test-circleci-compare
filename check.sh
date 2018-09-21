@@ -12,6 +12,8 @@ else
     t1=$(cat /tmp/some-yaml-cache/some.yaml.timestamp)
     t2=$(stat --printf "%Y" some.yaml)
     if [[ t1 != t2 ]]; then
+        echo t1
+        echo t2
         echo "File timestamp is different. Proceed as change"
         changed=True
     fi
