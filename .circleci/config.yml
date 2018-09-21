@@ -7,13 +7,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            # If the exact one isn't found (by sha256 hash) the previous cache
-            # key is used. Note, this is filtered to just master below.
-            - some-yaml-v2-{{ checksum "some.yaml" }}
-            - some-yaml-v2
+            # Fetch the latest version from the cache rather than a checksum. When
+            # the checksom isn't on the end of the key the latest version is fetched.
+            - some-yaml-v3
       - run: ./check.sh
       - save_cache:
-          key: some-yaml-v2-{{ checksum "some.yaml" }}
+          # Save with sha256 checksum in cache key to identify each unique change
+          key: some-yaml-v3-{{ checksum "some.yaml" }}
           paths:
             - /tmp/some-yaml-cache
 
