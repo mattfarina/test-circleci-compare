@@ -9,11 +9,11 @@ jobs:
           keys:
             # If the exact one isn't found (by sha256 hash) the previous cache
             # key is used. Note, this is filtered to just master below.
-            - some-yaml-v1-{{ checksum "some.yaml" }}
-            - some-yaml-v1
+            - some-yaml-v2-{{ checksum "some.yaml" }}
+            - some-yaml-v2
       - run: ./check.sh
       - save_cache:
-          key: some-yaml-v1-{{ checksum "some.yaml" }}
+          key: some-yaml-v2-{{ checksum "some.yaml" }}
           paths:
             - /tmp/some-yaml-cache
 
