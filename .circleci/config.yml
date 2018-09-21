@@ -1,11 +1,8 @@
 version: 2
 jobs:
-  build:
+  update:
     docker:
       - image: debian:9.5
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - restore_cache:
@@ -16,3 +13,13 @@ jobs:
           key: some-yaml-{{ checksum "some.yaml" }}
           paths:
             - /tmp/some-yaml-cache
+
+workflows:
+  version: 2
+  update_prod:
+    jobs:
+      - update:
+          filters:
+            branches:
+              only:
+                - master
