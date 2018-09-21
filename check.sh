@@ -11,8 +11,9 @@ else
     fi
 fi
 
-stat -f %m /tmp/some-yaml-cache/some.yaml
-stat -f %m some.yaml
+# Stat commands here are for linux which is different from macOS (BSDs)
+stat --printf "%Y" /tmp/some-yaml-cache/some.yaml
+stat --printf "%Y" some.yaml
 
 mkdir -p /tmp/some-yaml-cache
 cp some.yaml /tmp/some-yaml-cache/some.yaml
