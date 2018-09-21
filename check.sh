@@ -4,6 +4,11 @@ echo "Starting script..."
 
 if [ ! -f /tmp/some-yaml-cache/some.yaml ]; then
     echo "File not found!"
+else
+    local d=$(diff /tmp/some-yaml-cache/some.yaml some.yaml)
+    if [[ -z "$d" ]]; then
+        echo "File changed"
+    fi
 fi
 
 mkdir -p /tmp/some-yaml-cache
