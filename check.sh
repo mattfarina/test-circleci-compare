@@ -11,5 +11,8 @@ else
     fi
 fi
 
+stat -f %m /tmp/some-yaml-cache/some.yaml
+stat -f %m some.yaml
+
 mkdir -p /tmp/some-yaml-cache
 cp some.yaml /tmp/some-yaml-cache/some.yaml
