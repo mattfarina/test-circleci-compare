@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ ! -f some.yaml ]; then
+echo "Starting script..."
+
+if [ ! -f /tmp/some-yaml-cache/some.yaml ]; then
     echo "File not found!"
 fi
 
