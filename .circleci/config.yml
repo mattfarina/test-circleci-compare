@@ -8,7 +8,7 @@ jobs:
       - restore_cache:
           keys:
             - some-yaml-{{ checksum "some.yaml" }}
-      - run: check.sh
+      - run: ./check.sh
       - save_cache:
           key: some-yaml-{{ checksum "some.yaml" }}
           paths:
