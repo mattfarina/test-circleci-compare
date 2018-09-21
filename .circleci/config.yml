@@ -3,8 +3,16 @@ jobs:
   build:
     docker:
       - image: debian:9.5
+    branches:
+      only:
+        - master
     steps:
       - checkout
-      - run: |
-          echo $CIRCLE_COMPARE_URL | cut -d/ -f 7
-          echo $CIRCLE_COMPARE_URL
+      - restore_cache:
+          keys:
+            - some-yaml-{{ checksum "some.yaml" }}
+      - run: check.sh
+      - save_cache:
+          key: some-yaml-{{ checksum "some.yaml" }}
+          paths:
+            - /tmp/some-yaml-cache
