@@ -13,7 +13,7 @@ jobs:
             - some-yaml-v1
       - run: ./check.sh
       - save_cache:
-          key: some-yaml-{{ checksum "some.yaml" }}
+          key: some-yaml-v1-{{ checksum "some.yaml" }}
           paths:
             - /tmp/some-yaml-cache
 
