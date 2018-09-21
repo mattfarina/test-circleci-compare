@@ -2,7 +2,7 @@ version: 2
 jobs:
   update:
     docker:
-      - image: debian:9.5
+      - image: circleci/golang:1.11.0
     steps:
       - checkout
       - restore_cache:
