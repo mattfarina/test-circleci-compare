@@ -16,7 +16,7 @@ else
     fi
 fi
 
-if [[ ! changed == false ]]; then
+if [[ ! changed ]]; then
     echo "No changes detected."
 fi
 
