@@ -6,7 +6,7 @@ if [ ! -f /tmp/some-yaml-cache/some.yaml ]; then
     echo "File not found!"
 else
     d=$(diff /tmp/some-yaml-cache/some.yaml some.yaml)
-    echo d
+    echo $d
     if [[ -z "$d" ]]; then
         echo "File changed"
     fi
